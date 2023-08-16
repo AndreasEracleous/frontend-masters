@@ -20,7 +20,6 @@ const Auth = {
           password: user.password,
           name: user.name
         })
-
         try {
           navigator.credentials.store(credentials);
         } catch(e) {
@@ -64,10 +63,10 @@ const Auth = {
     autoLogin: async (event) => {
       if(window.PasswordCredential){
         const credentials = await navigator.credentials.get({password: true});
-        document.getElementById("login_email").value = credentials.id;
-        document.getElementById("login_password").value = credentials.password;
+        document.getElementById("login_email").value = credentials?.id;
+        document.getElementById("login_password").value = credentials?.password;
         Auth.login();
-        console.log(credentials);
+        // console.log(credentials);
       }
     },
     logout: ()=>{
